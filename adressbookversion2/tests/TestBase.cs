@@ -20,15 +20,10 @@ namespace adressbook_web_tests
         [SetUp]
         public void SetupTest()
         {
-            /* driver = new FirefoxDriver();
-             baseURL = "http://localhost/addressbook";
-             verificationErrors = new StringBuilder();
-
-             loginHelper = new LoginHelper(driver);
-             navigator = new NavigationHelper(driver, baseURL);
-             groupHelper = new GroupHelper(driver);*/
-
             app = new ApplicationManager();
+
+            app.Navigator.GoToHomePage();
+            app.Auth.Login(new AccountData("admin", "secret"));
         }
 
         [TearDown]

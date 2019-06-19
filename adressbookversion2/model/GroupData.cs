@@ -8,7 +8,7 @@ namespace adressbook_web_tests
 {
     public class GroupData
     {
-        private string name;
+        private string name = "";
         private string header = "";
         private string footer = "";
 
