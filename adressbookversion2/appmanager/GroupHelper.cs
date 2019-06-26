@@ -86,7 +86,7 @@ namespace adressbook_web_tests
         {
 
             driver.FindElement(By.LinkText("group page")).Click();
-            driver.FindElement(By.LinkText("Logout")).Click();
+          //  driver.FindElement(By.LinkText("Logout")).Click();
             return this;
         }
 

@@ -19,7 +19,7 @@ namespace adressbook_web_tests
         public void Login(AccountData account)
         {
             Type(By.Name("user"), account.Username);
-            Type(By.Name("pass"), account.Username);
+            Type(By.Name("pass"), account.Password);
             driver.FindElement(By.CssSelector("input[type=\"submit\"]")).Click();
         }
     }

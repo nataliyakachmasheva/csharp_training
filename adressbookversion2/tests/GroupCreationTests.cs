@@ -23,9 +23,9 @@ namespace adressbook_web_tests
            
         }
 
-           [Test]
-         public void EmptyGroupCreationTest()
-          {
+        [Test]
+        public void EmptyGroupCreationTest()
+        {
 
               GroupData group = new GroupData("");
               group.Header = "";
@@ -33,7 +33,7 @@ namespace adressbook_web_tests
 
               app.Groups.Create(group);
 
-          }
+        }
 
     }
 }
