@@ -58,7 +58,7 @@ namespace adressbook_web_tests
         public GroupHelper InitGroupCreation()
         {
 
-            driver.FindElement(By.XPath("//input[@name='new']")).Click();
+            driver.FindElement(By.Name("new")).Click();
             return this;
         }
 
@@ -86,8 +86,9 @@ namespace adressbook_web_tests
         public GroupHelper ReturnToGroupsPage()
         {
 
-            driver.FindElement(By.LinkText("group page")).Click();
-         
+            //driver.FindElement(By.LinkText("group page")).Click();
+            driver.FindElement(By.LinkText("Logout")).Click();
+
             return this;
         }
 
