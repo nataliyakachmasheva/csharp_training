@@ -18,7 +18,7 @@ namespace adressbook_web_tests
         }
         public void Login(AccountData account)
         {
-            if (IsLoggedIn())
+           if (IsLoggedIn())
             {
                 if (IsLoggedIn(account))
                 {
@@ -27,20 +27,13 @@ namespace adressbook_web_tests
 
                 Logout();
             }
+
             Type(By.Name("user"), account.Username);
             Type(By.Name("pass"), account.Password);
             driver.FindElement(By.CssSelector("input[type=\"submit\"]")).Click();
         }
 
-        public void Logout()
-        {  
-            if (IsLoggedIn())
-            {
-                driver.FindElement(By.LinkText("Logout")).Click();
-            }
-            
-            
-        }
+        
 
        
 
@@ -53,8 +46,18 @@ namespace adressbook_web_tests
         {
             return IsLoggedIn()
                 && driver.FindElement(By.Name("logout")).FindElement(By.TagName("b")).Text
-                    == "(" + account.Username + ")";
+                    == "(" +account.Username+ ")";
            
+        }
+
+        public void Logout()
+        {
+            if (IsLoggedIn())
+            {
+                driver.FindElement(By.LinkText("Logout")).Click();
+            }
+
+
         }
     }
 }

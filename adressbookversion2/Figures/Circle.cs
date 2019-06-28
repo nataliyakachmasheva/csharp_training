@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace adressbook_web_tests
+namespace adressbook_web_tests.tests
 {
     class Circle : Figure
     {

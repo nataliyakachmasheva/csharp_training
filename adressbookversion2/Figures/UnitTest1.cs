@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace adressbook_web_tests
+namespace adressbook_web_tests.tests
 {
     [TestClass]
     public class UnitTest1

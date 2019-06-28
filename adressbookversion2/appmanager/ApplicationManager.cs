@@ -25,7 +25,7 @@ namespace adressbook_web_tests
 
         {
             driver = new FirefoxDriver();
-            baseURL = "http://localhost/addressbook";
+            baseURL = "http://localhost/";
 
             loginHelper = new LoginHelper(this);
             navigator = new NavigationHelper(this, baseURL);
@@ -50,7 +50,7 @@ namespace adressbook_web_tests
 
         public static ApplicationManager GetInstance()
         {
-            if (! app.IsValueCreated)
+            if (!app.IsValueCreated)
             {
                 ApplicationManager newInstance = new ApplicationManager();
                 newInstance.Navigator.GoToHomePage();

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace adressbook_web_tests.tests
 {
     [TestClass]
-    public class UnitTest1
+    public class NewUnitTest1
     {
         [TestMethod]
         public void TestMethod1()
