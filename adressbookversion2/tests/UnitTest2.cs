@@ -22,11 +22,13 @@ namespace adressbook_web_tests
             IWebDriver driver = null;
             int attempt = 0;
 
-            while (driver.FindElements(By.Id("test")).Count == 0 && attempt < 60)
+            do
+
             {
                 System.Threading.Thread.Sleep(1000);
-                attempt ++;
+                attempt++;
             }
+            while (driver.FindElements(By.Id("test")).Count == 0 && attempt < 60);
         }
     }
 }
