@@ -5,6 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using OpenQA.Selenium;
+using OpenQA.Selenium.Firefox;
+using OpenQA.Selenium.Support.UI;
 
 
 namespace adressbook_web_tests
@@ -16,11 +19,13 @@ namespace adressbook_web_tests
 
         public void TestMethod1()
         {
-            string[] s = new string[] { "test1",  "test2", "test3" , "test4" }; 
+            IWebDriver driver = null;
+            int attempt = 0;
 
-            foreach (string element in s)
+            while (driver.FindElements(By.Id("test")).Count == 0 && attempt < 60)
             {
-                System.Console.Out.Write(element + "\n");
+                System.Threading.Thread.Sleep(1000);
+                attempt ++;
             }
         }
     }
