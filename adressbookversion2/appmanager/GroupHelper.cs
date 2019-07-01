@@ -30,6 +30,19 @@ namespace adressbook_web_tests
             return this;
         }
 
+        public List<GroupData> GetGroupList()
+        {
+            List<GroupData> groups = new List<GroupData>();
+            manager.Navigator.GoToGroupsPage();
+            ICollection<IWebElement>   elements = driver.FindElements(By.CssSelector("span.group"));
+            foreach (IWebElement element in elements)
+            {
+                
+                groups.Add(new GroupData(element.Text));
+            }
+            return groups;
+        }
+
         public GroupHelper Modify(int p, GroupData newData)
         {
             manager.Navigator.GoToGroupsPage();
@@ -86,8 +99,8 @@ namespace adressbook_web_tests
         public GroupHelper ReturnToGroupsPage()
         {
 
-            //driver.FindElement(By.LinkText("group page")).Click();
-            driver.FindElement(By.LinkText("Logout")).Click();
+            driver.FindElement(By.LinkText("group page")).Click();
+            //driver.FindElement(By.LinkText("Logout")).Click();
 
             return this;
         }
