@@ -18,6 +18,7 @@ namespace adressbook_web_tests
         protected LoginHelper loginHelper;
         protected NavigationHelper navigator;
         protected GroupHelper groupHelper;
+        protected ContactHelper contactHelper;
 
         private static ThreadLocal<ApplicationManager> app = new ThreadLocal<ApplicationManager>();
 
@@ -30,6 +31,7 @@ namespace adressbook_web_tests
             loginHelper = new LoginHelper(this);
             navigator = new NavigationHelper(this, baseURL);
             groupHelper = new GroupHelper(this);
+            contactHelper = new ContactHelper(this);
         }
 
         ~ApplicationManager()
@@ -96,6 +98,16 @@ namespace adressbook_web_tests
             }
         }
 
-        
+        public ContactHelper Contact
+        {
+            get
+            {
+                return contactHelper;
+            }
+        }
+
+
+
+        public object Contacts { get; internal set; }
     }
 }
