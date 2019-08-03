@@ -8,8 +8,11 @@ namespace adressbook_web_tests
 {
     public class GroupData : IEquatable<GroupData>, IComparable<GroupData>
     {
-       
-        
+        public GroupData()
+        {
+           
+        }
+
 
         public GroupData(string name)
         {
