@@ -12,11 +12,11 @@ namespace adressbook_web_tests
 {
     public class GroupHelper : HelperBase
     {
-        
+
         public GroupHelper(ApplicationManager manager)
             : base(manager)
         {
-           
+
         }
 
         public GroupHelper Create(GroupData group)
@@ -46,8 +46,8 @@ namespace adressbook_web_tests
                     {
                         Id = element.FindElement(By.TagName("input")).GetAttribute("value")
                     });
-                 
-                   
+
+
                 }
 
                 string allGroupNames = driver.FindElement(By.CssSelector("div#content form")).Text;
@@ -63,10 +63,10 @@ namespace adressbook_web_tests
                     {
                         groupCache[i].Name = parts[i - shift].Trim();
                     }
-                   
+
                 }
             }
-            
+
             return new List<GroupData>(groupCache);
         }
 
@@ -87,7 +87,7 @@ namespace adressbook_web_tests
             return this;
         }
 
-        
+
 
         public GroupHelper Remove(int p)
         {
@@ -100,69 +100,90 @@ namespace adressbook_web_tests
             return this;
         }
 
-        public GroupHelper InitGroupCreation()
+        public GroupHelper Remove(GroupData group)
         {
+            manager.Navigator.GoToGroupsPage();
 
-            driver.FindElement(By.Name("new")).Click();
-            return this;
-        }
-
-        public GroupHelper FillGroupForm(GroupData group)
-        {
-            Type(By.Name("group_name"), group.Name);
-            Type(By.Name("group_header"), group.Header);
-            Type(By.Name("group_footer"), group.Footer);
-            return this;
-        }
-
-
-        
-
-
-
-
-        public GroupHelper SubmitGroupCreation()
-        {
-
-            driver.FindElement(By.Name("submit")).Click();
-            groupCache = null;
-            return this;
-        }
-
-        public GroupHelper ReturnToGroupsPage()
-        {
-
-            driver.FindElement(By.LinkText("group page")).Click();
-            //driver.FindElement(By.LinkText("Logout")).Click();
+            SelectGroup(group.Id);
+            RemoveGroup();
+            ReturnToGroupsPage();
 
             return this;
         }
+    
 
-        public GroupHelper SelectGroup(int index)
-        {
-            driver.FindElement(By.XPath("(//input[@name='selected[]'])[" + (index+1) + "]")).Click();
-            return this;
-        }
+    public GroupHelper InitGroupCreation()
+    {
 
-        public GroupHelper RemoveGroup()
-        {
-            driver.FindElement(By.Name("delete")).Click();
-            groupCache = null;
-            return this;
-        }
-
-        public GroupHelper SubmitGroupModification()
-        {
-            driver.FindElement(By.Name("update")).Click();
-            return this;
-        }
-
-        public GroupHelper InitGroupModification()
-        {
-            driver.FindElement(By.Name("edit")).Click();
-            groupCache = null;
-            return this;
-        }
-
+        driver.FindElement(By.Name("new")).Click();
+        return this;
     }
+
+    public GroupHelper FillGroupForm(GroupData group)
+    {
+        Type(By.Name("group_name"), group.Name);
+        Type(By.Name("group_header"), group.Header);
+        Type(By.Name("group_footer"), group.Footer);
+        return this;
+    }
+
+
+
+
+
+
+
+    public GroupHelper SubmitGroupCreation()
+    {
+
+        driver.FindElement(By.Name("submit")).Click();
+        groupCache = null;
+        return this;
+    }
+
+    public GroupHelper ReturnToGroupsPage()
+    {
+
+        driver.FindElement(By.LinkText("group page")).Click();
+        //driver.FindElement(By.LinkText("Logout")).Click();
+
+        return this;
+    }
+
+    public GroupHelper SelectGroup(int index)
+    {
+        driver.FindElement(By.XPath("(//input[@name='selected[]'])[" + (index+1) + "]")).Click();
+        return this;
+    }
+
+    public GroupHelper SelectGroup(String id)
+    {
+        driver.FindElement(By.XPath("(//input[@name='selected[]' and @value='"+id+"'])")).Click();
+        return this;
+    }
+
+    public GroupHelper RemoveGroup()
+    {
+        driver.FindElement(By.Name("delete")).Click();
+        groupCache = null;
+        return this;
+    }
+
+    public GroupHelper SubmitGroupModification()
+    {
+        driver.FindElement(By.Name("update")).Click();
+        return this;
+    }
+
+    public GroupHelper InitGroupModification()
+    {
+        driver.FindElement(By.Name("edit")).Click();
+        groupCache = null;
+        return this;
+    }
+
+
+
+
+}
 }
