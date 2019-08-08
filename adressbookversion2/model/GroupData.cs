@@ -14,7 +14,7 @@ namespace adressbook_web_tests
     {
         public GroupData()
         {
-           
+
         }
 
 
@@ -38,7 +38,7 @@ namespace adressbook_web_tests
             return Name == other.Name;
         }
 
-        public override  int GetHashCode()
+        public override int GetHashCode()
         {
             return Name.GetHashCode();
         }
@@ -74,8 +74,20 @@ namespace adressbook_web_tests
         public static List<GroupData> GetAll() {
             using (AddressBookDB db = new AddressBookDB())
             {
-                return  (from g in db.Groups select g).ToList();
+                return (from g in db.Groups select g).ToList();
             }
         }
+
+        public List<ContactData> GetContacts()
+        {
+            using (AddressBookDB db = new AddressBookDB())
+            {
+                return (from c in db.Contacts
+                        from gcr in db.GCR.Where(p => p.GroupId == Id && p.ContactId == c.Id)
+                        select c).Distinct().ToList();
+            }
+
+        }
+
     }
 }

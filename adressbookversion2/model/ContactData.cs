@@ -5,23 +5,35 @@ using System.Text;
 using System.Threading.Tasks;
 using NUnit.Framework;
 using System.Text.RegularExpressions;
+using LinqToDB.Mapping;
 
 namespace adressbook_web_tests
 {
+    [Table(Name = "addressbook")]
    public  class ContactData : IEquatable<ContactData>, IComparable<ContactData>
     {
         private string allPhones;
+
+        public ContactData()
+        {
+           
+            
+        }
 
         public ContactData(string firstName, string secondName)
         {
             FirstName = firstName;
             SecondName = secondName;
-            
+
         }
 
+        [Column(Name = "id"), PrimaryKey]
+        public string Id { get; set; }
 
+        [Column(Name = "firstname")]
         public string FirstName { get; set; }
 
+        [Column(Name = "lastname")]
         public string SecondName { get; set; }
 
         public string Address { get; set; }
