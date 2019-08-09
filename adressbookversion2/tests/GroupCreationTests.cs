@@ -149,10 +149,12 @@ namespace adressbook_web_tests
              end = DateTime.Now;
              System.Console.Out.WriteLine(end.Subtract(start));*/
 
-            foreach (ContactData contact in GroupData.GetAll()[0].GetContacts())
+          foreach (ContactData contact in ContactData.GetAll())
             {
-                System.Console.Out.WriteLine(contact);
+                System.Console.Out.WriteLine(contact.Deprecated);
             }
+
+
 
             
         }

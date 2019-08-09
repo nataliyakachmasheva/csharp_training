@@ -41,6 +41,9 @@ namespace adressbook_web_tests
         public string MobilePhone { get; set; }
         public string WorkPhone { get; set; }
 
+        [Column(Name = "deprecated")]
+        public string Deprecated { get; set; }
+
         public string AllPhones
         {
             get
@@ -117,7 +120,13 @@ namespace adressbook_web_tests
 
         }
 
-
+        public static List<ContactData> GetAll()
+        {
+            using (AddressBookDB db = new AddressBookDB())
+            {
+                return (from c in db.Contacts.Where(x => x.Deprecated == "0000-00-00 00:00:00") select c).ToList();
+            }
+        }
 
 
     }
